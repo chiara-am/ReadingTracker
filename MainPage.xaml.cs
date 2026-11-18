@@ -9,16 +9,24 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        // Runs when the Search button is clicked or Enter is pressed
+        private async void OnSearchClicked(object? sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            // TODO: call the search service
+            await DisplayAlertAsync("Search", $"You searched for: {SearchEntry.Text}", "OK");
         }
+
+        // Runs when a result is tapped in the list
+        private void OnResultSelected(object? sender, SelectionChangedEventArgs e)
+        {
+            // TODO: open the detail page
+        }
+
+        // Runs when the Library button in the top bar is clicked
+        private async void Library_Clicked(object? sender, EventArgs e)
+        {
+            await DisplayAlertAsync("Library", "Library page coming soon.", "OK");
+        }
+
     }
 }
